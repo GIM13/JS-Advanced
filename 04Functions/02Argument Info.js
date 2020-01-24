@@ -1,10 +1,22 @@
-function argumentInfo(...args) {
-
-    let result;
+function argumentInfo(...args) { 
     let obj = {};
 
-    Object.values(arguments).map(x => obj[typeof (x.values())] = x.values());
+    args.map(x => {
 
-    console.log(arguments);
+        if (!obj.hasOwnProperty([typeof x])) {
+            obj[typeof x] = 0;
+        }
+
+        obj[typeof x]++;
+
+        console.log(`${typeof x}: ${x}`);
+    });
+
+    Object.entries(obj)
+    .sort((a,b) => b[1] - a[1])
+    .forEach( x => {
+
+        console.log(`${x[0]} = ${x[1]}`)
+    });
 }
-argumentInfo('cat', 42, function () { console.log('Hello world!'); })
+argumentInfo(42, 'cat', 15, 'kitten', 'tomcat')
