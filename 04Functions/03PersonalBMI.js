@@ -24,4 +24,3 @@ if (person.BMI < 18.5) {
     return person
 }
 console.log(personalBMI('Ivan', 20, 55, 200));
-));
