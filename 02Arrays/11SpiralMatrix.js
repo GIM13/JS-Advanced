@@ -62,4 +62,4 @@ function spiralMatrix(matrixRows, matrixCols) {
     }
     console.log(matrix.map(x => x.join(` `)).join(`\n`));
 }
-spiralMatrix(3, 3);
+spiralMatrix(5, 5);

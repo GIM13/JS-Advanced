@@ -11,7 +11,8 @@ for (let index = 1; index < array.length; index++) {
 }
 console.log(result.join(`\n`))
 }
-extractIncreasingSubsequenceFromArray([20, 
+extractIncreasingSubsequenceFromArray([
+    20, 
     3, 
     2, 
     15,
