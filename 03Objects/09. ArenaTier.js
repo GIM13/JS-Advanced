@@ -61,4 +61,12 @@ function arenaTier(str) {
 
     };
 };
-arenaTier(Pesho -> BattleCry -> 400);
+arenaTier(`Pesho -> Duck -> 400`);
+arenaTier(`Julius -> Shield -> 150`);
+arenaTier(`Gladius -> Heal -> 200`);
+arenaTier(`Gladius -> Support -> 250`);
+arenaTier(`Gladius -> Shield -> 250`);
+arenaTier(`Pesho vs Gladius`);
+arenaTier(`Gladius vs Julius`);
+arenaTier(`Gladius vs Gosho`);
+arenaTier(`Ave Cesar`);
