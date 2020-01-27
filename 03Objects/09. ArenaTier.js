@@ -2,14 +2,13 @@ function arenaTier(str) {
 
     let gladiators = [];
 
-    let array;
-
     for (const info of str) {
 
-        array = info.split(str.includes(`->`) ? ` -> ` : ` vs `);
+        let array;
 
-        if (array.length === 3) {
+        if (info.includes(`->`)) {
 
+            array = info.split(` -> `);
             let keyyss = Object.keys(gladiators);
 
             if (!keyyss.includes(array[0])) {
@@ -19,7 +18,9 @@ function arenaTier(str) {
 
             gladiators[array[0]][array[1]] = +array[2];
 
-        } else if (array.length === 2) {
+        } else if (info.includes(` vs `)) {
+
+            array = info.split(` vs `);
 
             for (const key0 in gladiators[array[0]]) {
                 for (const key1 in gladiators[array[1]]) {
@@ -37,11 +38,10 @@ function arenaTier(str) {
                     }
                 }
             }
-        } else if (array[0] === `Ave Cesar`) {
+        } else if (info.includes(`Ave Cesar`)) {
 
-            return Object.entries(gladiators)
-                .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length
-                    || a[0].localeCompare(b[0]))
+            Object.entries(gladiators)
+                .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length)
                 .map(x => {
                     let skill = Object.entries(x[1])
                         .reduce((sum, el) => {
@@ -52,21 +52,24 @@ function arenaTier(str) {
                     console.log(`${x[0]}: ${skill} skill`);
 
                     Object.entries(x[1])
-                        .sort((a, b) => b[1] - a[1])
+                        .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
                         .map(x => {
                             console.log(`- ${x[0]} <!> ${x[1]}`);
                         });
                 });
         };
-
+        
     };
 };
-arenaTier(`Pesho -> Duck -> 400`);
-arenaTier(`Julius -> Shield -> 150`);
-arenaTier(`Gladius -> Heal -> 200`);
-arenaTier(`Gladius -> Support -> 250`);
-arenaTier(`Gladius -> Shield -> 250`);
-arenaTier(`Pesho vs Gladius`);
-arenaTier(`Gladius vs Julius`);
-arenaTier(`Gladius vs Gosho`);
-arenaTier(`Ave Cesar`);
+arenaTier([
+    'Pesho -> Duck -> 400',
+    'Julius -> Shield -> 150',
+    'Gladius -> Heal -> 200',
+    'Gladius -> Support -> 250',
+    'Gladius -> Shield -> 250',
+    'Pesho vs Gladius',
+    'Gladius vs Julius',
+    'Gladius vs Gosho',
+    'Ave Cesar'
+]
+);
