@@ -9,6 +9,7 @@ function arenaTier(str) {
         if (info.includes(`->`)) {
 
             array = info.split(` -> `);
+            
             let keyyss = Object.keys(gladiators);
 
             if (!keyyss.includes(array[0])) {
