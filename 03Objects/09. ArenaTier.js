@@ -41,7 +41,8 @@ function arenaTier(str) {
         } else if (info.includes(`Ave Cesar`)) {
 
             Object.entries(gladiators)
-                .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length)
+                .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length
+                    || a[0].localeCompare(b[0]))
                 .map(x => {
                     let skill = Object.entries(x[1])
                         .reduce((sum, el) => {
@@ -58,7 +59,7 @@ function arenaTier(str) {
                         });
                 });
         };
-        
+
     };
 };
 arenaTier([
