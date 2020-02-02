@@ -9,7 +9,7 @@ function arenaTier(str) {
         if (info.includes(`->`)) {
 
             array = info.split(` -> `);
-            
+
             let keyyss = Object.keys(gladiators);
 
             if (!keyyss.includes(array[0])) {
@@ -41,17 +41,25 @@ function arenaTier(str) {
             }
         } else if (info.includes(`Ave Cesar`)) {
 
-            Object.entries(gladiators)
-                .sort((a, b) => Object.keys(b[1]).length - Object.keys(a[1]).length
-                    || a[0].localeCompare(b[0]))
-                .map(x => {
-                    let skill = Object.entries(x[1])
-                        .reduce((sum, el) => {
-                            sum += el[1];
-                            return sum;
-                        }, 0)
+            function skill(z) {
+                return Object.entries(z)
+                    .reduce((sum, el) => {
+                        sum += +el[1];
+                        return sum;
+                    }, 0);
+            }
+            gladiators = Object.entries(gladiators);
+            gladiators.map(x => x[2] = +skill(x[1]));
+            console.log(gladiators)
+            gladiators
+                .sort((a, b) => {
 
-                    console.log(`${x[0]}: ${skill} skill`);
+                    b[2]- a[2] || a[0].localeCompare(b[0]);
+
+                })
+                .map(x => {
+
+                    console.log(`${x[0]}: ${skill(x[1])} skill`);
 
                     Object.entries(x[1])
                         .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
