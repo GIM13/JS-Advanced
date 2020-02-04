@@ -16,20 +16,18 @@ function tickets(array = [], str = ``) {
         return acc;
     }, []);
 
-    return ticketsList.sort(
-        (a, b) => {
-            if (typeof a[`${str}`] === `number`) {
-                 a-b;
-            }else{
-                a[`${str}`].localeCompare(b[`${str}`]);
-            }
-        });
+    if (str === `price`) {
+        ticketsList.sort((a, b) => a - b);
+    } else {
+        ticketsList.sort((a,b) => a[`${str}`].localeCompare(b[`${str}`]));
+    }
+    return ticketsList
 }
 console.log(tickets(
- ['Philadelphia|94.20|available',
- 'New York City|95.99|available',
- 'New York City|95.99|sold',
- 'Boston|126.20|departed'],
-'destination'
+    ['Philadelphia|94.20|available',
+        'New York City|95.99|available',
+        'New York City|95.99|sold',
+        'Boston|126.20|departed'],
+    'destination'
 
 ))
