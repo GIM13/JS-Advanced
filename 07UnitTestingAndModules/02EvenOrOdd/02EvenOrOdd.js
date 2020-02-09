@@ -8,4 +8,4 @@ function isOddOrEven(string) {
 
     return "odd";
 }
-mo
+module.exports = isOddOrEven;
