@@ -17,4 +17,4 @@ describe(`03CharLookup`, () => {
     it(`check for correct data`, () => {
         assert.equal(lookupChar(`string`, 4),`n`);
     });
-})
+});

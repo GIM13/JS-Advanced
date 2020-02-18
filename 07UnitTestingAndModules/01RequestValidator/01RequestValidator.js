@@ -7,6 +7,7 @@ function requestValidator(object = {}) {
 
         property = `Method`;
         isValid = false;
+        throw new Error(`Invalid request header: Invalid ${property}`);
     } else {
 
         let array = [`GET`, `POST`, `DELETE`, `CONNECT`];
@@ -15,6 +16,7 @@ function requestValidator(object = {}) {
 
             property = `Method`;
             isValid = false;
+            throw new Error(`Invalid request header: Invalid ${property}`);
         }
     }
 
@@ -22,6 +24,7 @@ function requestValidator(object = {}) {
 
         property = `URI`;
         isValid = false;
+        throw new Error(`Invalid request header: Invalid ${property}`);
     } else {
 
         let array = [`<`, `>`, `\\`, `&`, `'`, `"`, `%`, `-`, `$`, ` `];
@@ -30,6 +33,7 @@ function requestValidator(object = {}) {
 
                 property = `URI`;
                 isValid = false;
+                throw new Error(`Invalid request header: Invalid ${property}`);
             }
         })
         
@@ -39,6 +43,7 @@ function requestValidator(object = {}) {
 
         property = `Version`;
         isValid = false;
+        throw new Error(`Invalid request header: Invalid ${property}`);
     } else {
 
         let array = [`HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`, `HTTP/2.0`];
@@ -47,6 +52,7 @@ function requestValidator(object = {}) {
 
             property = `Version`;
             isValid = false;
+            throw new Error(`Invalid request header: Invalid ${property}`);
         }
     }
 
@@ -54,6 +60,7 @@ function requestValidator(object = {}) {
 
         property = `Message`;
         isValid = false;
+        throw new Error(`Invalid request header: Invalid ${property}`);
     } else {
 
         let array = [`<`, `>`, `\\`, `&`, `'`, `"`];
@@ -62,19 +69,20 @@ function requestValidator(object = {}) {
 
             property = `Message`;
             isValid = false;
+            throw new Error(`Invalid request header: Invalid ${property}`);
         }
     }
 
     if (isValid) {
         console.log(object);
     } else {
-        console.log(`Invalid request header: Invalid ${property}". `);
+        console.log(`Invalid request header: Invalid ${property}`);
     }
 }
-requestValidator({
+requestValidator( {
     method: 'GET',
     uri: 'svn.public.catalog',
     version: 'HTTP/1.1',
     message: ''
 }
-)
+);
