@@ -33,6 +33,10 @@ describe("ChristmasMovies", () => {
             let christmasMovies = new ChristmasMovies();
             assert.throw(() => christmasMovies.discardMovie(`movieName`), `movieName is not at your collection!`);
         });
+        it("check for missng movie", () => {
+            let christmasMovies = new ChristmasMovies();
+            assert.throw(() => christmasMovies.discardMovie(`movieName`), `movieName is not at your collection!`);
+        });
     });
     describe("detailsAboutMyOrder", () => {
 
